@@ -1,0 +1,29 @@
+{{#bs-panel heading="Simple Panel"}}
+  <form {{action 'authenticate' on='submit'}}>
+    {{#if errorMessage}}
+    <div class="alert alert-danger alert-dismissible">
+      <span>{{errorMessage}}</span>
+    </div>
+    {{/if}}
+    <div {{bind-attr class=":form-group errors.identification:has-error"}}>
+      <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+      <label class="control-label visible-ie8 visible-ie9">Email address</label>
+      {{input placeholder='Email address' name='username' id="login_user"
+           value=identification class='form-control form-control-solid placeholder-no-fix'}}
+      {{#if errors.identification}}
+        <span class="help-block">{{errors.identification}}</span>
+      {{/if}}
+    </div>
+    <div class="form-group">
+      <label class="control-label visible-ie8 visible-ie9">Password</label>
+      {{input type='password' class="form-control form-control-solid placeholder-no-fix"
+        name='login_password' placeholder="Password" value=password id="login_pass"}}
+    </div>
+    <div class="form-actions">
+      <input type="submit" class="btn btn-success uppercase" value="Login">
+  <!--       <label class="rememberme check">
+      <input type="checkbox" name="remember" value="1"/>Remember </label> -->
+      <a href="javascript:;" id="forget-password" class="forget-password">Forgot Password?</a>
+    </div>
+  </form>
+{{/bs-panel}}

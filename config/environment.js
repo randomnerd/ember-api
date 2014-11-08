@@ -2,6 +2,8 @@
 
 module.exports = function(environment) {
   var ENV = {
+    'simple-auth': { authorizer: 'simple-auth-authorizer:oauth2-bearer' },
+    'simple-auth-oauth2': { serverTokenEndpoint: '/oauth/token' },
     modulePrefix: 'starter',
     environment: environment,
     baseURL: '/',
