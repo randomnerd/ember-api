@@ -2,8 +2,16 @@
 
 module.exports = function(environment) {
   var ENV = {
-    'simple-auth': { authorizer: 'simple-auth-authorizer:oauth2-bearer' },
-    'simple-auth-oauth2': { serverTokenEndpoint: '/oauth/token' },
+    'simple-auth': {
+      authorizer: 'simple-auth-authorizer:oauth2-bearer',
+      crossOriginWhitelist: ['https://rails-api-c9-randomnerd.c9.io']
+    },
+    'simple-auth-oauth2': { serverTokenEndpoint: 'https://rails-api-c9-randomnerd.c9.io/oauth/token' },
+    contentSecurityPolicy: {
+      'style-src': "'unsafe-inline' 'self' fonts.googleapis.com",
+      'font-src': "'unsafe-inline' 'self' 'unsafe-eval' fonts.gstatic.com",
+      'connect-src': "'self' rails-api-c9-randomnerd.c9.io"
+    },
     modulePrefix: 'starter',
     environment: environment,
     baseURL: '/',
